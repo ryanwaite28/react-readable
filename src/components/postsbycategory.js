@@ -74,6 +74,10 @@ class PostsByCategory extends Component {
     this.setState({sort: 'DESC', sorted_posts: posts})
   }
 
+  sortChanged() {
+    this.setState({sort: "CHANGED"});
+  }
+
   childChanged(){
     this.forceUpdate()
   }
@@ -115,7 +119,7 @@ class PostsByCategory extends Component {
           <hr/>
           <p style={{marginBottom: "75px"}}></p>
           {this.props.posts && keys && keys.map((post) => (
-            <Post key={post.id} alertParent={this.childChanged.bind(this)} post={post} />
+            <Post key={post.id} alertParent={this.childChanged.bind(this)} sortChanged={this.sortChanged.bind(this)} post={post} />
           ))}
           </div>
       </div>
