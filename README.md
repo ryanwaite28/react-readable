@@ -3,6 +3,8 @@
 ##### Project Two - Readable
 -----
 
+![](react_logo.png)
+
 This is an application created with React and Redux. This projects demonstrates the understanding of the
 Redux library and how to better manage application state by deciding when to use data from Component State or Redux Store.
 
