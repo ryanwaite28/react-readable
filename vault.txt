@@ -1,0 +1,164 @@
+add_comment,
+edit_comment,
+delete_comment,
+upvote_comment,
+downvote_comment
+
+add_post,
+edit_post,
+delete_post,
+upvote_post,
+downvote_post,
+
+
+
+<Route exact path='/categories' component={CategoriesPage} />
+
+
+{this.props.showComments && this.props.comments && this.props.comments.length > 1 && this.props.comments.map((comment) => (
+  <Comment key={comment.id} comment={comment} />
+))}
+
+
+if(POST_ACTIONS.indexOf(post_action) === -1) {
+  console.log('Unknown POST ACTION...', post_action);
+  throw new ArgumentError("ArgumentError - Unknown POST ACTION...");
+}
+
+
+, id, timestamp, title, body, author, category, voteScore, deleted
+
+
+export function add_post ({ id, timestamp, title, body, author, category, voteScore, deleted }) {
+  return {
+    type: ADD_POST,
+    id,
+    timestamp,
+    title,
+    body,
+    author,
+    category,
+    voteScore,
+    deleted
+  }
+}
+export function edit_post ({ id, timestamp, title, body, author, category, voteScore, deleted }) {
+  return {
+    type: EDIT_POST,
+    id,
+    timestamp,
+    title,
+    body,
+    author,
+    category,
+    voteScore,
+    deleted
+  }
+}
+export function delete_post ({ id, timestamp, title, body, author, category, voteScore, deleted }) {
+  return {
+    type: DELETE_POST,
+    id,
+    timestamp,
+    title,
+    body,
+    author,
+    category,
+    voteScore,
+    deleted
+  }
+}
+export function upvote_post ({ id, timestamp, title, body, author, category, voteScore, deleted }) {
+  return {
+    type: UPVOTE_POST,
+    id,
+    timestamp,
+    title,
+    body,
+    author,
+    category,
+    voteScore,
+    deleted
+  }
+}
+export function downvote_post ({ id, timestamp, title, body, author, category, voteScore, deleted }) {
+  return {
+    type: DOWNVOTE_POST,
+    id,
+    timestamp,
+    title,
+    body,
+    author,
+    category,
+    voteScore,
+    deleted
+  }
+}
+
+
+
+export function add_comment ({ id, parentid, timestamp, body, author, voteScore, deleted, parentdeleted }) {
+  return {
+    type: ADD_COMMENT,
+    id,
+    parentid,
+    timestamp,
+    body,
+    author,
+    voteScore,
+    deleted,
+    parentdeleted
+  }
+}
+export function edit_comment ({ id, parentid, timestamp, body, author, voteScore, deleted, parentdeleted }) {
+  return {
+    type: EDIT_COMMENT,
+    id,
+    parentid,
+    timestamp,
+    body,
+    author,
+    voteScore,
+    deleted,
+    parentdeleted
+  }
+}
+export function delete_comment ({ id, parentid, timestamp, body, author, voteScore, deleted, parentdeleted }) {
+  return {
+    type: DELETE_COMMENT,
+    id,
+    parentid,
+    timestamp,
+    body,
+    author,
+    voteScore,
+    deleted,
+    parentdeleted
+  }
+}
+export function upvote_comment ({ id, parentid, timestamp, body, author, voteScore, deleted, parentdeleted }) {
+  return {
+    type: UPVOTE_COMMENT,
+    id,
+    parentid,
+    timestamp,
+    body,
+    author,
+    voteScore,
+    deleted,
+    parentdeleted
+  }
+}
+export function downvote_comment ({ id, parentid, timestamp, body, author, voteScore, deleted, parentdeleted }) {
+  return {
+    type: DOWNVOTE_COMMENT,
+    id,
+    parentid,
+    timestamp,
+    body,
+    author,
+    voteScore,
+    deleted,
+    parentdeleted
+  }
+}
