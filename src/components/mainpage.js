@@ -92,6 +92,10 @@ class MainPage extends Component {
     this.forceUpdate()
   }
 
+  sortChanged() {
+    this.setState({sort: "CHANGED"});
+  }
+
   getRenderKeys() {
     if(this.state.sorted_posts){
       return this.state.sorted_posts.length > 0 ? this.state.sorted_posts.filter(post => post.deleted === false) : false;
@@ -120,13 +124,13 @@ class MainPage extends Component {
       </div>
         <div className="Main">
           <br />
-          <button className="btn btn-primary transition" style={{margin: "10px"}}><Link to="/create">Create Post</Link></button>
+          <button className="btn btn-primary transition" style={{margin: "10px"}}><Link to="/create/post">Create Post</Link></button>
           <button className="btn btn-default transition" style={{margin: "10px"}} onClick={() => {this.sort_posts_byScore_asc()}}>Sort By Vote Score Ascending</button>
           <button className="btn btn-default transition" style={{margin: "10px"}} onClick={() => {this.sort_posts_byScore_desc()}}>Sort By Vote Score Descending</button>
           <hr/>
           <p style={{marginBottom: "75px"}}></p>
           {this.props.posts && keys && keys.map((post) => (
-            <Post key={post.id} alertParent={this.childChanged.bind(this)} post={post} />
+            <Post key={post.id} alertParent={this.childChanged.bind(this)} sortChanged={this.sortChanged.bind(this)} post={post} />
           ))}
           </div>
       </div>
