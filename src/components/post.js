@@ -110,6 +110,9 @@ class Post extends Component {
 
         this.props.upvote_post(obj);
         this.forceUpdate();
+        if(this.props.sortChanged){
+          this.props.sortChanged();
+        }
       })
     })
   }
@@ -127,6 +130,9 @@ class Post extends Component {
 
         this.props.downvote_post(obj);
         this.forceUpdate();
+        if(this.props.sortChanged){
+          this.props.sortChanged();
+        }
       })
     })
   }
@@ -141,18 +147,16 @@ class Post extends Component {
     {method: "DELETE", headers: api.headers_one()})
     .then((resp) => {
       console.log(resp);
-      resp.json().then((data) => {
-        var obj = {
-          type: actions.DELETE_POST,
-          id: data.id,
-          deleted: data.deleted
-        }
+      var obj = {
+        type: actions.DELETE_POST,
+        id: this.props.post.id,
+        deleted: true
+      }
 
-        this.props.delete_post(obj);
-        if(this.props.alertParent){
-          this.props.alertParent();
-        }
-      })
+      this.props.delete_post(obj);
+      if(this.props.alertParent){
+        this.props.alertParent();
+      }
     })
   }
 
