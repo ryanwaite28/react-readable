@@ -73,7 +73,6 @@ class MainPage extends Component {
 
     var keys = Object.keys(this.props.posts);
     var posts = keys.map(key => this.props.posts[key]);
-
     posts.sort((a, b) => {
       if (a.voteScore > b.voteScore) {
         return -1;

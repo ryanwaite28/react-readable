@@ -14,6 +14,7 @@ class Post extends Component {
   }
 
   state = {
+    sort: '',
     displayEditor: 'none',
     titleInput: this.props.post.title,
     bodyInput: this.props.post.body
@@ -162,11 +163,61 @@ class Post extends Component {
     })
   }
 
+  sort_comments_byScore_asc() {
+    if(this.state.sort === 'ASC') {
+      return;
+    }
+
+    var keys = Object.keys(this.props.comments);
+    var comments = keys.map(key => this.props.comments[key]);
+    comments.sort((a, b) => {
+      if (a.voteScore < b.voteScore) {
+        return -1;
+      }
+      if (a.voteScore > b.voteScore) {
+        return 1;
+      }
+      // a.voteScore must be equal to b.voteScore
+      return 0;
+    });
+
+    this.setState({sort: 'ASC', sorted_comments: comments})
+  }
+
+  sort_comments_byScore_desc() {
+    if(this.state.sort === 'DESC') {
+      return;
+    }
+
+    var keys = Object.keys(this.props.comments);
+    var comments = keys.map(key => this.props.comments[key]);
+    comments.sort((a, b) => {
+      if (a.voteScore > b.voteScore) {
+        return -1;
+      }
+      if (a.voteScore < b.voteScore) {
+        return 1;
+      }
+      // a.voteScore must be equal to b.voteScore
+      return 0;
+    });
+
+    this.setState({sort: 'DESC', sorted_comments: comments})
+  }
+
+  sortChanged() {
+    this.setState({sort: "CHANGED"});
+  }
+
   childChanged(){
     this.forceUpdate();
   }
 
   getRenderKeys() {
+    if(this.state.sorted_comments){
+      return this.state.sorted_comments.length > 0 ? this.state.sorted_comments.filter(comment => comment.deleted === false && comment.parentId === this.props.post.id) : false;
+    }
+
     if(this.props.comments) {
       var array = [];
       Object.keys(this.props.comments).forEach((item, index) => {
@@ -199,6 +250,14 @@ class Post extends Component {
           {"Date"}: {new Date(this.props.post.timestamp).toString().substr(0,16)}<br/><br />
         </p>
         <button className="post-buttons btn btn-info btn-sm transition"><Link to={"/posts/" + this.props.post.id + "/create_comment"}>Create Comment</Link></button>
+        {this.props.showComments && keys && keys.length > 0 && (
+          <div>
+            <br></br>
+            <p>Sort Comments by Vote Score</p>
+            <button className="post-buttons btn btn-default btn-sm transition" style={{margin: "10px"}} onClick={() => {this.sort_comments_byScore_asc()}}>Ascending</button>
+            <button className="post-buttons btn btn-default btn-sm transition" style={{margin: "10px"}} onClick={() => {this.sort_comments_byScore_desc()}}>Descending</button>
+          </div>
+        )}
 
         <div style={{display: this.state.displayEditor}}>
         <p className="text-center">Title</p>
@@ -222,7 +281,7 @@ class Post extends Component {
         <hr />
         <br />
         {this.props.showComments && keys && keys.length > 0 && keys.map((comment) => (
-          <Comment key={comment.id} alertParent={this.childChanged.bind(this)} comment={comment} />
+          <Comment key={comment.id} alertParent={this.childChanged.bind(this)} sortChanged={this.sortChanged.bind(this)} comment={comment} />
         ))}
       </div>
     )

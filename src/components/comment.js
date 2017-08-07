@@ -57,6 +57,9 @@ class Comment extends Component {
 
         this.props.upvote_comment(obj);
         this.forceUpdate();
+        if(this.props.sortChanged){
+          this.props.sortChanged();
+        }
       })
     })
   }
@@ -74,6 +77,9 @@ class Comment extends Component {
 
         this.props.downvote_comment(obj);
         this.forceUpdate();
+        if(this.props.sortChanged){
+          this.props.sortChanged();
+        }
       })
     })
   }
