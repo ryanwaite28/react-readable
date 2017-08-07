@@ -102,7 +102,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 .post-buttons {
-  margin: 0px 10px;
+  margin: 0px 10px 10px 10px;
 }
 
 .transition {
@@ -129,7 +129,6 @@ h1, h2, h3, h4, h5, h6 {
 .btn {
   display: inline-block;
   padding: 6px 12px;
-  margin-bottom: 0;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.42857143;
