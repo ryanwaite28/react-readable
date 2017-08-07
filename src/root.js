@@ -20,7 +20,7 @@ const Root = ({ store }) => (
       <div>
         <Route exact path='/' component={MainPage} />
         <Route exact path='/posts/:id' component={PostPage} />
-        <Route exact path='/create' component={CreatePage} />
+        <Route exact path='/create/post' component={CreatePage} />
         <Route exact path='/posts/:id/create_comment' component={CreateComment} />
 
         <Route exact path='/:category' component={PostsByCategory} />
