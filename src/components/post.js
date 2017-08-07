@@ -14,7 +14,9 @@ class Post extends Component {
   }
 
   state = {
-    displayEditor: 'none'
+    displayEditor: 'none',
+    titleInput: this.props.post.title,
+    bodyInput: this.props.post.body
   }
 
   buildComments() {
