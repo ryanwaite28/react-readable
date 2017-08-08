@@ -69,32 +69,22 @@ class Post extends Component {
   }
 
   updateTitleInput(input) {
-    if(input.length < 5) {
-      alert("Title Must Be At Least 5 Characters");
-      return;
-    }
     this.setState({titleInput: input});
   }
 
   updateBodyInput(input) {
-    if(input.length < 5) {
-      alert("Body Must Be At Least 5 Characters");
-      return;
-    }
     this.setState({bodyInput: input});
   }
 
   confirmPostEdits() {
-    // if( this.state.titleInput === this.props.post.title ) {
-    //   this.setState({titleInput: this.props.post.title});
-    //   this.toggleEditor();
-    //   return;
-    // }
-    // if( this.state.bodyInput === this.props.post.body ) {
-    //   this.setState({bodyInput: this.props.post.body});
-    //   this.toggleEditor();
-    //   return;
-    // }
+    if(this.state.titleInput < 5) {
+      alert("Title Must Be At Least 5 Characters");
+      return;
+    }
+    if(this.state.bodyInput < 5) {
+      alert("Body Must Be At Least 5 Characters");
+      return;
+    }
 
     fetch("http://localhost:5001/posts/" + this.props.post.id,
     {method: "PUT", body:JSON.stringify({title: this.state.titleInput.trim(), body: this.state.bodyInput.trim()}), headers: api.headers_one()})

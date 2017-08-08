@@ -22,19 +22,14 @@ class Comment extends Component {
   }
 
   updateBodyInput(input) {
-    if(input.length < 5) {
-      alert("Body Must Be At Least 5 Characters");
-      return;
-    }
     this.setState({bodyInput: input});
   }
 
   confirmCommentEdits() {
-    // if( this.state.bodyInput === this.props.comment.body ) {
-    //   this.setState({bodyInput: this.props.comment.body});
-    //   this.toggleEditor();
-    //   return;
-    // }
+    if(this.state.bodyInput < 5) {
+      alert("Body Must Be At Least 5 Characters");
+      return;
+    }
 
     fetch("http://localhost:5001/comments/" + this.props.comment.id,
     {method: "PUT", body:JSON.stringify({body: this.state.bodyInput.trim()}), headers: api.headers_one()})
