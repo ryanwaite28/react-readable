@@ -82,9 +82,10 @@ label {
 }
 
 .post {
-
+  position: relative;
 }
 .comment {
+  position: relative;
   padding: 10px;
   background: #f2f2f2;
   margin: 10px 0px;
@@ -100,6 +101,22 @@ label {
   width: 85%;
   min-height: 100px;
   margin-bottom: 10px;
+}
+
+.blue-check-mark {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 35px;
+  height: 35px;
+  border: 2px solid #0095FF;
+  padding: 5px;
+  border-radius: 25px;
+  background: white;
+  z-index: 10;
+  box-shadow: 0px 2px 12px grey;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .post-buttons-div {

@@ -11,7 +11,9 @@ class Comment extends Component {
 
   state = {
     displayEditor: 'none',
-    bodyInput: this.props.comment.body
+    bodyInput: this.props.comment.body,
+    opacity: 0,
+    visibility: "hidden"
   }
 
   toggleEditor() {
@@ -28,6 +30,12 @@ class Comment extends Component {
   }
 
   confirmCommentEdits() {
+    // if( this.state.bodyInput === this.props.comment.body ) {
+    //   this.setState({bodyInput: this.props.comment.body});
+    //   this.toggleEditor();
+    //   return;
+    // }
+
     fetch("http://localhost:5001/comments/" + this.props.comment.id,
     {method: "PUT", body:JSON.stringify({body: this.state.bodyInput.trim()}), headers: api.headers_one()})
     .then((resp) => {
@@ -40,7 +48,16 @@ class Comment extends Component {
 
         this.props.edit_comment(obj);
         this.toggleEditor();
+        this.success();
       })
+    })
+  }
+
+  success() {
+    this.setState({opacity: 1, visibility: "visible"}, () => {
+      setTimeout(() => {
+        this.setState({opacity: 0, visibility: "hidden"});
+      } , 2000);
     })
   }
 
@@ -113,6 +130,7 @@ class Comment extends Component {
   render(){
     return (
       <div className="comment transition">
+        <img className="blue-check-mark transition" src={require("./blue-check-mark.png")} style={{opacity: this.state.opacity, visibility: this.state.visibility}}/>
         <h4>{this.props.comment.body}</h4>
         <p>Vote Score: {this.props.comment.voteScore}</p>
         <br/>

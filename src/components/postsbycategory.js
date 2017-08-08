@@ -111,10 +111,12 @@ class PostsByCategory extends Component {
         <div className="Main">
           <br />
           <button className="btn btn-primary transition middlr"><Link to="/">Home</Link></button>
-          <br/><br/>
+          <br/>
+
           <div className="middlr text-center">
-            <button className="btn btn-default transition" style={{margin: "10px"}} onClick={() => {this.sort_posts_byScore_asc()}}>Sort By Vote Score Ascending</button>
-            <button className="btn btn-default transition" style={{margin: "10px"}} onClick={() => {this.sort_posts_byScore_desc()}}>Sort By Vote Score Descending</button>
+            <p>Sort by Vote Score</p>
+            <button className="btn btn-default transition" style={{margin: "10px"}} onClick={() => {this.sort_posts_byScore_asc()}}>Ascending</button>
+            <button className="btn btn-default transition" style={{margin: "10px"}} onClick={() => {this.sort_posts_byScore_desc()}}>Descending</button>
           </div>
           <hr/>
           <p style={{marginBottom: "75px"}}></p>

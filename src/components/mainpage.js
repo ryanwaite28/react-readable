@@ -125,10 +125,13 @@ class MainPage extends Component {
           <br />
           <div className="text-center">
             <button className="btn btn-primary transition" style={{margin: "10px"}}><Link to="/create/post">Create Post</Link></button>
-            <button className="btn btn-default transition" style={{margin: "10px"}} onClick={() => {this.sort_posts_byScore_asc()}}>Sort By Vote Score Ascending</button>
-            <button className="btn btn-default transition" style={{margin: "10px"}} onClick={() => {this.sort_posts_byScore_desc()}}>Sort By Vote Score Descending</button>
+            <br/>
+            <p>Sort by Vote Score</p>
+            <button className="btn btn-default transition" style={{margin: "10px"}} onClick={() => {this.sort_posts_byScore_asc()}}>Ascending</button>
+            <button className="btn btn-default transition" style={{margin: "10px"}} onClick={() => {this.sort_posts_byScore_desc()}}>Descending</button>
           </div>
           <hr/>
+          <h2 className="text-center">Posts</h2>
           <p style={{marginBottom: "75px"}}></p>
           {this.props.posts && keys && keys.map((post) => (
             <Post key={post.id} alertParent={this.childChanged.bind(this)} sortChanged={this.sortChanged.bind(this)} post={post} />

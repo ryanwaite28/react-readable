@@ -17,7 +17,9 @@ class Post extends Component {
     sort: '',
     displayEditor: 'none',
     titleInput: this.props.post.title,
-    bodyInput: this.props.post.body
+    bodyInput: this.props.post.body,
+    opacity: 0,
+    visibility: "hidden"
   }
 
   buildComments() {
@@ -83,6 +85,17 @@ class Post extends Component {
   }
 
   confirmPostEdits() {
+    // if( this.state.titleInput === this.props.post.title ) {
+    //   this.setState({titleInput: this.props.post.title});
+    //   this.toggleEditor();
+    //   return;
+    // }
+    // if( this.state.bodyInput === this.props.post.body ) {
+    //   this.setState({bodyInput: this.props.post.body});
+    //   this.toggleEditor();
+    //   return;
+    // }
+
     fetch("http://localhost:5001/posts/" + this.props.post.id,
     {method: "PUT", body:JSON.stringify({title: this.state.titleInput.trim(), body: this.state.bodyInput.trim()}), headers: api.headers_one()})
     .then((resp) => {
@@ -96,7 +109,16 @@ class Post extends Component {
 
         this.props.edit_post(obj);
         this.toggleEditor();
+        this.success();
       })
+    })
+  }
+
+  success() {
+    this.setState({opacity: 1, visibility: "visible"}, () => {
+      setTimeout(() => {
+        this.setState({opacity: 0, visibility: "hidden"});
+      } , 2000);
     })
   }
 
@@ -236,6 +258,7 @@ class Post extends Component {
     var keys = this.getRenderKeys();
     return (
       <div className="post">
+        <img className="blue-check-mark transition" src={require("./blue-check-mark.png")} style={{opacity: this.state.opacity, visibility: this.state.visibility}}/>
         <h3><Link to={"/posts/" + this.props.post.id}>{this.props.post.title}</Link></h3>
         <p>{this.props.post.body}</p>
         <br/>
@@ -280,7 +303,10 @@ class Post extends Component {
           <button className="post-buttons btn btn-info btn-sm transition" onClick={() => {this.downvotePost()}}>DownVote</button>
         </div>
         <hr />
-        <br />
+
+        {this.props.showComments && keys && keys.length > 0 && (
+          <h2 className="text-center">Comments</h2>
+        )}
         {this.props.showComments && keys && keys.length > 0 && keys.map((comment) => (
           <Comment key={comment.id} alertParent={this.childChanged.bind(this)} sortChanged={this.sortChanged.bind(this)} comment={comment} />
         ))}
