@@ -20,6 +20,7 @@ Make sure that you install node with the PATH variable so you can run node anywh
 * to start the react app, run this command: npm start
 * This will start the app in your default browser at: localhost:3000
 
+![](ru_p2.png)
 
 # Ryan M. Waite
 ### Web/Mobile Developer & Programmer
