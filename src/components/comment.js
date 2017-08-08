@@ -125,7 +125,7 @@ class Comment extends Component {
           <textarea className="editor" value={this.state.bodyInput}
             onChange={(event) => this.updateBodyInput(event.target.value)}></textarea>
           <button className="middlr btn btn-success btn-sm transition" onClick={() => {this.confirmCommentEdits()}}>Confirm Edit</button>
-          <br />
+          <hr />
         </div>
         <div className="post-buttons-div">
           <button className="post-buttons btn btn-info btn-sm transition" onClick={() => {this.toggleEditor()}}>Edit</button>

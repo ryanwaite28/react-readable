@@ -117,28 +117,28 @@ class CreatePage extends Component {
           <h1><Link to="/">Home</Link></h1>
         </div>
         <div className="Main">
-        <div className="new-post-div">
+        <div className="new-post-div text-center">
           <br />
           <label >
-            <span style={{marginRight: "10px"}}>Title:</span>
+            <span style={{marginRight: "10px"}}>Title:</span></label>
             <input type="text" className="input-s1" value={this.state.title} onChange={(event) => this.updateFormTitle(event.target.value)}/>
-          </label>
-          <br /><br />
+
+          <br /><br /><br/>
           <label >
-            <span style={{marginRight: "10px"}}>Body:</span>
-            <input type="text" className="input-s1" value={this.state.body} onChange={(event) => this.updateFormBody(event.target.value)}/>
-          </label>
-          <br /><br />
+            <span style={{marginRight: "10px"}}>Body:</span></label>
+            <textarea type="text" className="input-s1" value={this.state.body} onChange={(event) => this.updateFormBody(event.target.value)}></textarea>
+
+          <br /><br /><br/>
           <label >
-            <span style={{marginRight: "10px"}}>Category:</span>
+            <span style={{marginRight: "10px"}}>Category:</span></label>
             <select value={this.state.category} className="input-s1" onChange={(event) => this.updateFormCategory(event.target.value)}>
               <option disabled>Select...</option>
               {this.props.categories && this.props.categories.map((category) => (
                 <option key={category} value={category}>{category}</option>
               ))}
             </select>
-          </label>
-          <br/><br/>
+
+          <br/><br/><br/>
           <button className="btn btn-success btn-sm transition" onClick={() => {this.createPost()}}>Submit</button>
         </div>
         </div>

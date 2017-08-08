@@ -75,14 +75,14 @@ class CreateComment extends Component {
           <h1><Link to="/">Home</Link></h1>
         </div>
         <div className="Main">
-        <div className="new-post-div">
+        <div className="new-post-div text-center">
           <br />
           <Link to={"/posts/" + this.props.match.params.id}>Back To Post</Link>
           <br/><br/><br/><br/>
           <label >
-            <span style={{marginRight: "10px"}}>Body:</span>
-            <input type="text" className="input-s1" value={this.state.body} onChange={(event) => this.updateFormBody(event.target.value)}/>
-          </label>
+            <span style={{marginRight: "10px"}}>Body:</span></label>
+            <textarea className="input-s1" value={this.state.body} onChange={(event) => this.updateFormBody(event.target.value)}></textarea>
+
           <br/><br/>
           <button className="btn btn-success btn-sm transition" onClick={() => {this.createComment()}}>Submit</button>
         </div>

@@ -251,11 +251,12 @@ class Post extends Component {
         </p>
         <button className="post-buttons btn btn-info btn-sm transition"><Link to={"/posts/" + this.props.post.id + "/create_comment"}>Create Comment</Link></button>
         {this.props.showComments && keys && keys.length > 0 && (
-          <div>
-            <br></br>
+          <div className="text-center">
+            <br/><hr/>
             <p>Sort Comments by Vote Score</p>
             <button className="post-buttons btn btn-default btn-sm transition" style={{margin: "10px"}} onClick={() => {this.sort_comments_byScore_asc()}}>Ascending</button>
             <button className="post-buttons btn btn-default btn-sm transition" style={{margin: "10px"}} onClick={() => {this.sort_comments_byScore_desc()}}>Descending</button>
+            <hr/>
           </div>
         )}
 
@@ -269,7 +270,7 @@ class Post extends Component {
           onChange={(event) => this.updateBodyInput(event.target.value)}></textarea>
 
           <button className="middlr btn btn-success btn-sm transition" onClick={() => {this.confirmPostEdits()}}>Confirm Edit</button>
-          <br />
+          <hr />
         </div>
 
         <div className="post-buttons-div">
