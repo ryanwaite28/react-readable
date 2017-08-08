@@ -55,6 +55,7 @@ label {
   color: white;
   background: #0095FF;
   padding: 10px;
+  z-index: 100;
 }
 .main-banner > h1, .main-banner > a {
   margin: 0px;
