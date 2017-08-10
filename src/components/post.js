@@ -10,6 +10,8 @@ import Comment from '../components/comment'
 class Post extends Component {
   constructor(props) {
     super(props);
+    this.sortChanged = this.sortChanged.bind(this);
+    this.childChanged = this.childChanged.bind(this);
     this.buildComments();
   }
 
@@ -298,7 +300,7 @@ class Post extends Component {
           <h2 className="text-center">Comments</h2>
         )}
         {this.props.showComments && keys && keys.length > 0 && keys.map((comment) => (
-          <Comment key={comment.id} alertParent={this.childChanged.bind(this)} sortChanged={this.sortChanged.bind(this)} comment={comment} />
+          <Comment key={comment.id} alertParent={this.childChanged} sortChanged={this.sortChanged} comment={comment} />
         ))}
       </div>
     )

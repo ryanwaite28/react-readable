@@ -11,6 +11,8 @@ import Post from '../components/post'
 class PostsByCategory extends Component {
   constructor(props) {
     super(props);
+    this.sortChanged = this.sortChanged.bind(this);
+    this.childChanged = this.childChanged.bind(this);
     this.getPosts();
   }
 
@@ -121,7 +123,7 @@ class PostsByCategory extends Component {
           <hr/>
           <p style={{marginBottom: "75px"}}></p>
           {this.props.posts && keys && keys.map((post) => (
-            <Post key={post.id} alertParent={this.childChanged.bind(this)} sortChanged={this.sortChanged.bind(this)} post={post} />
+            <Post key={post.id} alertParent={this.childChanged} sortChanged={this.sortChanged} post={post} />
           ))}
           </div>
       </div>

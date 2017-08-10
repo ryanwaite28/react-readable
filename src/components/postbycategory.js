@@ -11,6 +11,7 @@ import Comment from '../components/comment'
 class PostByCategory extends Component {
   constructor(props) {
     super(props);
+    this.childChanged = this.childChanged.bind(this);
     this.getPosts();
   }
 
@@ -62,7 +63,7 @@ class PostByCategory extends Component {
         <br />
           {this.props.match.params.post_id && this.props.posts && key
             && key.category === this.props.match.params.category &&
-            <Post showComments={true} alertParent={this.childChanged.bind(this)} post={key} />}
+            <Post showComments={true} alertParent={this.childChanged} post={key} />}
         </div>
       </div>
 

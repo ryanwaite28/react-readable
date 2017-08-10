@@ -11,6 +11,7 @@ import Comment from '../components/comment'
 class PostPage extends Component {
   constructor(props) {
     super(props);
+    this.childChanged = this.childChanged.bind(this);
     this.getPosts();
   }
 
@@ -61,7 +62,7 @@ class PostPage extends Component {
         <div className="Main">
         <br />
           {this.props.match.params.id && this.props.posts && key &&
-            <Post showComments={true} alertParent={this.childChanged.bind(this)} post={key} />}
+            <Post showComments={true} alertParent={this.childChanged} post={key} />}
         </div>
       </div>
 

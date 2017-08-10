@@ -11,6 +11,8 @@ import Post from '../components/post'
 class MainPage extends Component {
   constructor(props) {
     super(props);
+    this.sortChanged = this.sortChanged.bind(this);
+    this.childChanged = this.childChanged.bind(this);
     this.getCategories();
     this.getPosts();
   }
@@ -134,7 +136,7 @@ class MainPage extends Component {
           <h2 className="text-center">Posts</h2>
           <p style={{marginBottom: "75px"}}></p>
           {this.props.posts && keys && keys.map((post) => (
-            <Post key={post.id} alertParent={this.childChanged.bind(this)} sortChanged={this.sortChanged.bind(this)} post={post} />
+            <Post key={post.id} alertParent={this.childChanged} sortChanged={this.sortChanged} post={post} />
           ))}
           </div>
       </div>
