@@ -1,7 +1,7 @@
-function ArgumentError(msg){
-  this.name = 'ArgumentError';
-  this.msg = msg;
-}
+// function ArgumentError(msg){
+//   this.name = 'ArgumentError';
+//   this.msg = msg;
+// }
 
 // Action Strings
 export const LOAD_POSTS = 'LOAD_POSTS'

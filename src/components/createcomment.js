@@ -3,12 +3,13 @@ import '../App.css';
 import * as actions from '../actions'
 import { connect } from 'react-redux'
 import * as api from '../api'
-import { Link, Route, Router } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import * as tools from '../tools'
 
 class CreateComment extends Component {
   constructor(props) {
     super(props);
+    this.setState({component: "Create Comment"});
   }
 
   state = {

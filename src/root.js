@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
-import { Router, Route, BrowserRouter } from 'react-router-dom'
+import { Route, BrowserRouter } from 'react-router-dom'
 // import App from './App'
 
-import Post from './components/post'
+
 import PostPage from './components/postpage'
 import MainPage from './components/mainpage'
-import CategoriesPage from './components/categoriespage'
+
 import CreatePage from './components/createpage'
 import CreateComment from './components/createcomment'
 

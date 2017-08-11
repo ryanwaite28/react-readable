@@ -3,10 +3,8 @@ import '../App.css';
 import * as actions from '../actions'
 import { connect } from 'react-redux'
 import * as api from '../api'
-import { Link, Route, Router } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import * as tools from '../tools'
-
-import Post from '../components/post'
 
 class CreatePage extends Component {
   constructor(props) {
@@ -23,7 +21,7 @@ class CreatePage extends Component {
   }
 
   toggleEditor() {
-    var value = this.state.displayEditor == 'none' ? "block" : "none";
+    var value = this.state.displayEditor === 'none' ? "block" : "none";
     this.setState({displayEditor: value});
   }
 

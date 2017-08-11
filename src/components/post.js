@@ -3,7 +3,7 @@ import '../App.css';
 import * as actions from '../actions'
 import { connect } from 'react-redux'
 import * as api from '../api'
-import { Link, Route, Router } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Comment from '../components/comment'
 
@@ -47,16 +47,17 @@ class Post extends Component {
 
   getCommentsLength() {
     var num;
+    var array;
 
     if(Array.isArray(this.props.comments)){
-      var array = this.props.comments.filter((comment) => {
+      array = this.props.comments.filter((comment) => {
         return comment.parentId === this.props.post.id && comment.deleted === false;
       });
       num = array.length;
     }
     else {
       var keys = Object.keys(this.props.comments);
-      var array = keys.filter((comment_id) => {
+      array = keys.filter((comment_id) => {
         return this.props.comments[comment_id].parentId === this.props.post.id && this.props.comments[comment_id].deleted === false;
       });
       num = array.length;
@@ -66,7 +67,7 @@ class Post extends Component {
   }
 
   toggleEditor() {
-    var value = this.state.displayEditor == 'none' ? "block" : "none";
+    var value = this.state.displayEditor === 'none' ? "block" : "none";
     this.setState({displayEditor: value});
   }
 
@@ -156,7 +157,7 @@ class Post extends Component {
 
   deletePost() {
     var ask = window.confirm("Delete This Post?");
-    if(ask == false) {
+    if(ask === false) {
       return;
     }
 
@@ -235,7 +236,7 @@ class Post extends Component {
     if(this.props.comments) {
       var array = [];
       Object.keys(this.props.comments).forEach((item, index) => {
-        if( this.props.comments[item].parentId === this.props.post.id && this.props.comments[item].deleted == false ) {
+        if( this.props.comments[item].parentId === this.props.post.id && this.props.comments[item].deleted === false ) {
           array.push(this.props.comments[item]);
         }
       });
@@ -250,7 +251,7 @@ class Post extends Component {
     var keys = this.getRenderKeys();
     return (
       <div className="post">
-        <img className="blue-check-mark transition" src={require("./blue-check-mark.png")} style={{opacity: this.state.opacity, visibility: this.state.visibility}}/>
+        <img alt="Blue Check Mark" className="blue-check-mark transition" src={require("./blue-check-mark.png")} style={{opacity: this.state.opacity, visibility: this.state.visibility}}/>
         <h3><Link to={"/posts/" + this.props.post.id}>{this.props.post.title}</Link></h3>
         <p>{this.props.post.body}</p>
         <br/>
@@ -317,17 +318,10 @@ function mapStateToProps ({ posts, comments }) {
 function mapDispatchToProps (dispatch) {
   return {
     build_comments: (data) => dispatch(actions.build_comments(data)),
-    post_page_load: (data) => dispatch(actions.post_page_load(data)),
-    add_post: (data) => dispatch(actions.add_post(data)),
     edit_post: (data) => dispatch(actions.edit_post(data)),
     delete_post: (data) => dispatch(actions.delete_post(data)),
     upvote_post: (data) => dispatch(actions.upvote_post(data)),
     downvote_post: (data) => dispatch(actions.downvote_post(data)),
-    add_comment: (data) => dispatch(actions.add_comment(data)),
-    edit_comment: (data) => dispatch(actions.edit_comment(data)),
-    delete_comment: (data) => dispatch(actions.delete_comment(data)),
-    upvote_comment: (data) => dispatch(actions.upvote_comment(data)),
-    downvote_comment: (data) => dispatch(actions.downvote_comment(data))
   }
 }
 

@@ -3,10 +3,9 @@ import '../App.css';
 import * as actions from '../actions'
 import { connect } from 'react-redux'
 import * as api from '../api'
-import { Link, Route, Router } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Post from '../components/post'
-import Comment from '../components/comment'
 
 class PostByCategory extends Component {
   constructor(props) {
@@ -31,12 +30,12 @@ class PostByCategory extends Component {
   getRenderKey() {
     if(this.props.posts) {
       if(Array.isArray(this.props.posts)) {
-        var value =  this.props.posts.length > 0 ? this.props.posts.filter(post => post.id === this.props.match.params.post_id)[0] : false;
+        return this.props.posts.length > 0 ? this.props.posts.filter(post => post.id === this.props.match.params.post_id)[0] : false;
       }
       else {
         var array = [];
         Object.keys(this.props.posts).forEach((key, index) => {
-          if(this.props.posts[key].deleted == false) {
+          if(this.props.posts[key].deleted === false) {
             array.push(this.props.posts[key]);
           }
         });
@@ -80,18 +79,7 @@ function mapStateToProps ({ posts, comments }) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    post_page_load: (data) => dispatch(actions.post_page_load(data)),
     load_posts: (data) => dispatch(actions.load_posts(data)),
-    add_post: (data) => dispatch(actions.add_post(data)),
-    edit_post: (data) => dispatch(actions.edit_post(data)),
-    delete_post: (data) => dispatch(actions.delete_post(data)),
-    upvote_post: (data) => dispatch(actions.upvote_post(data)),
-    downvote_post: (data) => dispatch(actions.downvote_post(data)),
-    add_comment: (data) => dispatch(actions.add_comment(data)),
-    edit_comment: (data) => dispatch(actions.edit_comment(data)),
-    delete_comment: (data) => dispatch(actions.delete_comment(data)),
-    upvote_comment: (data) => dispatch(actions.upvote_comment(data)),
-    downvote_comment: (data) => dispatch(actions.downvote_comment(data))
   }
 }
 

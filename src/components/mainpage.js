@@ -3,8 +3,7 @@ import '../App.css';
 import * as actions from '../actions'
 import { connect } from 'react-redux'
 import * as api from '../api'
-import { Link, Route, Router } from 'react-router-dom'
-import * as tools from '../tools'
+import { Link } from 'react-router-dom'
 
 import Post from '../components/post'
 
@@ -105,7 +104,7 @@ class MainPage extends Component {
     if(this.props.posts) {
       var array = [];
       Object.keys(this.props.posts).forEach((key, index) => {
-        if(this.props.posts[key].deleted == false) {
+        if(this.props.posts[key].deleted === false) {
           array.push(this.props.posts[key]);
         }
       });
@@ -155,19 +154,8 @@ function mapStateToProps ({ posts, comments, categories }) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    build_comments: (data) => dispatch(actions.build_comments(data)),
     load_categories: (data) => dispatch(actions.load_categories(data)),
     load_posts: (data) => dispatch(actions.load_posts(data)),
-    add_post: (data) => dispatch(actions.add_post(data)),
-    edit_post: (data) => dispatch(actions.edit_post(data)),
-    delete_post: (data) => dispatch(actions.delete_post(data)),
-    upvote_post: (data) => dispatch(actions.upvote_post(data)),
-    downvote_post: (data) => dispatch(actions.downvote_post(data)),
-    add_comment: (data) => dispatch(actions.add_comment(data)),
-    edit_comment: (data) => dispatch(actions.edit_comment(data)),
-    delete_comment: (data) => dispatch(actions.delete_comment(data)),
-    upvote_comment: (data) => dispatch(actions.upvote_comment(data)),
-    downvote_comment: (data) => dispatch(actions.downvote_comment(data))
   }
 }
 

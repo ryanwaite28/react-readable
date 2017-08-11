@@ -3,10 +3,11 @@ import '../App.css';
 import * as actions from '../actions'
 import { connect } from 'react-redux'
 import * as api from '../api'
-import { Link, Route, Router } from 'react-router-dom'
+
 class Comment extends Component {
   constructor(props) {
     super(props);
+    this.setState({component: "Comment"});
   }
 
   state = {
@@ -17,7 +18,7 @@ class Comment extends Component {
   }
 
   toggleEditor() {
-    var value = this.state.displayEditor == 'none' ? "block" : "none";
+    var value = this.state.displayEditor === 'none' ? "block" : "none";
     this.setState({displayEditor: value});
   }
 
@@ -98,7 +99,7 @@ class Comment extends Component {
 
   deleteComment() {
     var ask = window.confirm("Delete This Comment?");
-    if(ask == false) {
+    if(ask === false) {
       return;
     }
 
@@ -125,7 +126,7 @@ class Comment extends Component {
   render(){
     return (
       <div className="comment transition">
-        <img className="blue-check-mark transition" src={require("./blue-check-mark.png")} style={{opacity: this.state.opacity, visibility: this.state.visibility}}/>
+        <img alt="Blue Check Mark" className="blue-check-mark transition" src={require("./blue-check-mark.png")} style={{opacity: this.state.opacity, visibility: this.state.visibility, top: "15px", right: "15px"}}/>
         <h4>{this.props.comment.body}</h4>
         <p>Vote Score: {this.props.comment.voteScore}</p>
         <br/>

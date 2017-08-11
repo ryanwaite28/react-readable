@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import * as actions from './actions'
 import { connect } from 'react-redux'
-import * as api from './api'
-import { Link, Route, Router } from 'react-router-dom'
 
 import Post from './components/post'
 
