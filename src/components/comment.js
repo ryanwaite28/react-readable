@@ -160,14 +160,6 @@ function mapStateToProps ({ posts, comments }) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    post_page_load: (data) => dispatch(actions.post_page_load(data)),
-    load_posts: (data) => dispatch(actions.load_posts(data)),
-    add_post: (data) => dispatch(actions.add_post(data)),
-    edit_post: (data) => dispatch(actions.edit_post(data)),
-    delete_post: (data) => dispatch(actions.delete_post(data)),
-    upvote_post: (data) => dispatch(actions.upvote_post(data)),
-    downvote_post: (data) => dispatch(actions.downvote_post(data)),
-    add_comment: (data) => dispatch(actions.add_comment(data)),
     edit_comment: (data) => dispatch(actions.edit_comment(data)),
     delete_comment: (data) => dispatch(actions.delete_comment(data)),
     upvote_comment: (data) => dispatch(actions.upvote_comment(data)),
