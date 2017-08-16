@@ -1,6 +1,9 @@
 # Udacity
 ### React Nanodegree Program
 ##### Project Two - Readable
+
+Deployed on heroku: https://rmw-udacity-react-readable.herokuapp.com/
+
 -----
 
 ![](react_and_redux.jpg)
